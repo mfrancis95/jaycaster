@@ -20,6 +20,8 @@ public class Game implements GLEventListener {
     
     private final List<Renderer> renderers = new LinkedList<>();
     
+    private final List<Updatable> updatables = new LinkedList<>();
+    
     private final JFrame window;
     
     public Game(String title, int targetFPS, int width, int height) {
@@ -36,8 +38,14 @@ public class Game implements GLEventListener {
         renderers.add(renderer);
     }
     
+    public void addUpdatable(Updatable updatable) {
+        updatables.add(updatable);
+    }
+    
     public void display(GLAutoDrawable drawable) {
+        updatables.forEach(Updatable::update);
         GL4 gl = drawable.getGL().getGL4();
+        gl.glClear(GL4.GL_COLOR_BUFFER_BIT | GL4.GL_DEPTH_BUFFER_BIT);
         renderers.forEach(r -> r.render(gl));
     }
     
@@ -48,6 +56,8 @@ public class Game implements GLEventListener {
     
     public void init(GLAutoDrawable drawable) {
         GL4 gl = drawable.getGL().getGL4();
+        gl.glEnable(GL4.GL_CULL_FACE);
+        gl.glEnable(GL4.GL_DEPTH_TEST);
         renderers.forEach(r -> r.init(gl));
     }
     

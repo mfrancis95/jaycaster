@@ -45,7 +45,7 @@ public abstract class Renderer {
         program = gl.glCreateProgram();
         gl.glAttachShader(program, vertexShader);
         gl.glAttachShader(program, fragmentShader);
-        gl.glLinkProgram(program);        
+        gl.glLinkProgram(program);
     }
     
     private void initTexture(GL4 gl) {
@@ -53,7 +53,8 @@ public abstract class Renderer {
             texture = TextureIO.newTexture(textureSource, false);
             texture.setTexParameteri(gl, GL4.GL_TEXTURE_MIN_FILTER, GL4.GL_NEAREST);
             texture.setTexParameteri(gl, GL4.GL_TEXTURE_MAG_FILTER, GL4.GL_NEAREST);
-        } catch (Exception ex) {}
+        }
+        catch (Exception ex) {}
     }
     
     private void initVertexArray(GL4 gl) {
@@ -62,7 +63,7 @@ public abstract class Renderer {
         gl.glBindVertexArray(vertexArray = buffer.get(0));
     }
     
-    private static String loadShader(String file) throws IOException  {
+    private static String loadShader(String file) throws IOException {
         StringBuilder shader = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             reader.lines().forEach(line -> {
