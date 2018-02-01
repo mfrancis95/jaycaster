@@ -21,14 +21,17 @@ public class TileRenderer extends Renderer {
     
     public Light light;
     
+    private final int height;
+    
     private int lightColor, lightDirection;
     
     private int projectionAspectRatio, projectionFar, projectionFOV, projectionNear;
     
     public Tile[] tiles;
     
-    public TileRenderer(float aspectRatio) {
+    public TileRenderer(float aspectRatio, int height) {
         this.aspectRatio = aspectRatio;
+        this.height = height;
     }
     
     public void init(GL4 gl) {
@@ -38,10 +41,11 @@ public class TileRenderer extends Renderer {
     }
     
     private void initBufferData(GL4 gl) {
-        FloatBuffer positionData = GLBuffers.newDirectFloatBuffer(tiles.length * RaisedTile.BUFFER_SIZE);
-        FloatBuffer textureData = GLBuffers.newDirectFloatBuffer(tiles.length * RaisedTile.TEXTURE_BUFFER_SIZE);
-        FloatBuffer normalData = GLBuffers.newDirectFloatBuffer(tiles.length * RaisedTile.BUFFER_SIZE);
+        FloatBuffer positionData = GLBuffers.newDirectFloatBuffer(height * tiles.length * RaisedTile.BUFFER_SIZE);
+        FloatBuffer textureData = GLBuffers.newDirectFloatBuffer(height * tiles.length * RaisedTile.TEXTURE_BUFFER_SIZE);
+        FloatBuffer normalData = GLBuffers.newDirectFloatBuffer(height * tiles.length * RaisedTile.BUFFER_SIZE);
         for (Tile tile : tiles) {
+            tile.height = height;
             tile.texture = texture;
             tile.setBuffers(positionData, textureData, normalData);
         }

@@ -13,14 +13,15 @@ public class RaisedTile extends Tile {
         super(x, y);
     }
     
-    private void createWallBack() {
-        positionData.put(x - 0.5f).put(0.5f).put(y + 0.5f);
-        positionData.put(x - 0.5f).put(-0.5f).put(y + 0.5f);
-        positionData.put(x + 0.5f).put(-0.5f).put(y + 0.5f);
+    private void createWallBack(int tileHeight) {
+        float y = 0.5f + tileHeight - 1;
+        positionData.put(x - 0.5f).put(y).put(this.y + 0.5f);
+        positionData.put(x - 0.5f).put(y - 1).put(this.y + 0.5f);
+        positionData.put(x + 0.5f).put(y - 1).put(this.y + 0.5f);
         
-        positionData.put(x + 0.5f).put(0.5f).put(y + 0.5f);
-        positionData.put(x - 0.5f).put(0.5f).put(y + 0.5f);
-        positionData.put(x + 0.5f).put(-0.5f).put(y + 0.5f);
+        positionData.put(x + 0.5f).put(y).put(this.y + 0.5f);
+        positionData.put(x - 0.5f).put(y).put(this.y + 0.5f);
+        positionData.put(x + 0.5f).put(y - 1).put(this.y + 0.5f);
         
         float width = texture.getWidth() / (float) (textureSize * texture.getWidth());
         float height = texture.getHeight() / (float) (textureSize * texture.getHeight());
@@ -38,14 +39,15 @@ public class RaisedTile extends Tile {
         }
     }
     
-    private void createWallFront() {
-        positionData.put(x + 0.5f).put(0.5f).put(y - 0.5f);
-        positionData.put(x + 0.5f).put(-0.5f).put(y - 0.5f);
-        positionData.put(x - 0.5f).put(-0.5f).put(y - 0.5f);
+    private void createWallFront(int tileHeight) {
+        float y = 0.5f + tileHeight - 1;
+        positionData.put(x + 0.5f).put(y).put(this.y - 0.5f);
+        positionData.put(x + 0.5f).put(y - 1).put(this.y - 0.5f);
+        positionData.put(x - 0.5f).put(y - 1).put(this.y - 0.5f);
         
-        positionData.put(x - 0.5f).put(0.5f).put(y - 0.5f);
-        positionData.put(x + 0.5f).put(0.5f).put(y - 0.5f);
-        positionData.put(x - 0.5f).put(-0.5f).put(y - 0.5f);
+        positionData.put(x - 0.5f).put(y).put(this.y - 0.5f);
+        positionData.put(x + 0.5f).put(y).put(this.y - 0.5f);
+        positionData.put(x - 0.5f).put(y - 1).put(this.y - 0.5f);
         
         float width = texture.getWidth() / (float) (textureSize * texture.getWidth());
         float height = texture.getHeight() / (float) (textureSize * texture.getHeight());
@@ -63,14 +65,15 @@ public class RaisedTile extends Tile {
         }
     }
     
-    private void createWallLeft() {
-        positionData.put(x - 0.5f).put(0.5f).put(y - 0.5f);
-        positionData.put(x - 0.5f).put(-0.5f).put(y - 0.5f);
-        positionData.put(x - 0.5f).put(-0.5f).put(y + 0.5f);
+    private void createWallLeft(int tileHeight) {
+        float y = 0.5f + tileHeight - 1;
+        positionData.put(x - 0.5f).put(y).put(this.y - 0.5f);
+        positionData.put(x - 0.5f).put(y - 1).put(this.y - 0.5f);
+        positionData.put(x - 0.5f).put(y - 1).put(this.y + 0.5f);
         
-        positionData.put(x - 0.5f).put(0.5f).put(y + 0.5f);
-        positionData.put(x - 0.5f).put(0.5f).put(y - 0.5f);
-        positionData.put(x - 0.5f).put(-0.5f).put(y + 0.5f);
+        positionData.put(x - 0.5f).put(y).put(this.y + 0.5f);
+        positionData.put(x - 0.5f).put(y).put(this.y - 0.5f);
+        positionData.put(x - 0.5f).put(y - 1).put(this.y + 0.5f);
         
         float width = texture.getWidth() / (float) (textureSize * texture.getWidth());
         float height = texture.getHeight() / (float) (textureSize * texture.getHeight());
@@ -88,14 +91,15 @@ public class RaisedTile extends Tile {
         }
     }
     
-    private void createWallRight() {
-        positionData.put(x + 0.5f).put(0.5f).put(y + 0.5f);
-        positionData.put(x + 0.5f).put(-0.5f).put(y + 0.5f);
-        positionData.put(x + 0.5f).put(-0.5f).put(y - 0.5f);
+    private void createWallRight(int tileHeight) {
+        float y = 0.5f + tileHeight - 1;
+        positionData.put(x + 0.5f).put(y).put(this.y + 0.5f);
+        positionData.put(x + 0.5f).put(y - 1).put(this.y + 0.5f);
+        positionData.put(x + 0.5f).put(y - 1).put(this.y - 0.5f);
         
-        positionData.put(x + 0.5f).put(0.5f).put(y - 0.5f);
-        positionData.put(x + 0.5f).put(0.5f).put(y + 0.5f);
-        positionData.put(x + 0.5f).put(-0.5f).put(y - 0.5f);
+        positionData.put(x + 0.5f).put(y).put(this.y - 0.5f);
+        positionData.put(x + 0.5f).put(y).put(this.y + 0.5f);
+        positionData.put(x + 0.5f).put(y - 1).put(this.y - 0.5f);
         
         float width = texture.getWidth() / (float) (textureSize * texture.getWidth());
         float height = texture.getHeight() / (float) (textureSize * texture.getHeight());
@@ -115,10 +119,12 @@ public class RaisedTile extends Tile {
     
     public void setBuffers(FloatBuffer... buffers) {
         super.setBuffers(buffers);
-        createWallBack();
-        createWallFront();
-        createWallLeft();
-        createWallRight();        
+        for (int height = 1; height <= this.height; height++) {
+            createWallBack(height);
+            createWallFront(height);
+            createWallLeft(height);
+            createWallRight(height);
+        }
     }
     
     public void setTextureIndices(int x, int y) {

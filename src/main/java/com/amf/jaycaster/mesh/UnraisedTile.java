@@ -15,13 +15,14 @@ public class UnraisedTile extends Tile {
     } 
     
     private void createCeiling() {
-        positionData.put(x - 0.5f).put(0.5f).put(y + 0.5f);
-        positionData.put(x - 0.5f).put(0.5f).put(y - 0.5f);
-        positionData.put(x + 0.5f).put(0.5f).put(y - 0.5f);
+        float y = 0.5f + height - 1;
+        positionData.put(x - 0.5f).put(y).put(this.y + 0.5f);
+        positionData.put(x - 0.5f).put(y).put(this.y - 0.5f);
+        positionData.put(x + 0.5f).put(y).put(this.y - 0.5f);
         
-        positionData.put(x + 0.5f).put(0.5f).put(y + 0.5f);
-        positionData.put(x - 0.5f).put(0.5f).put(y + 0.5f);
-        positionData.put(x + 0.5f).put(0.5f).put(y - 0.5f);
+        positionData.put(x + 0.5f).put(y).put(this.y + 0.5f);
+        positionData.put(x - 0.5f).put(y).put(this.y + 0.5f);
+        positionData.put(x + 0.5f).put(y).put(this.y - 0.5f);
         
         float width = texture.getWidth() / (float) (textureSize * texture.getWidth());
         float height = texture.getHeight() / (float) (textureSize * texture.getHeight());
